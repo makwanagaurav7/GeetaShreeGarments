@@ -10,7 +10,9 @@ function createWindow () {
     height,
     frame: false,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      enableRemoteModule: true,
+      openDevTools: false
     },
  })
   // and load the index.html of the app.

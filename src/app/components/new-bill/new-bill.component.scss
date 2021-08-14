@@ -1,0 +1,33 @@
+.customer-details-wrapper {
+    padding-top: 30px;
+}
+.mat-form-field-class {
+    display: block;
+}
+.add-items {
+    font-size: 25px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.parent-mat-form ::ng-deep .mat-form-field-flex {
+    height: 45px;
+}
+.parent-mat-form ::ng-deep .mat-form-field-infix {
+    padding-top: 3px;
+}
+.parent-mat-form ::ng-deep .mat-form-field-outline {
+    color: black;
+}
+.item-heading {
+    text-align: center;
+    font-weight: 500;
+}
+.preview-button {
+    width: 140px;
+    height: 50px;
+    font-size: 20px;
+    background-color: orange;
+    color: black;
+    border: none;
+    margin-right: -12px;
+}

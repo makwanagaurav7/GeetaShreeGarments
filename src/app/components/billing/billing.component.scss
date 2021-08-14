@@ -1,0 +1,21 @@
+.header-wrapper {
+    height: 75px;
+    background-color: orange;
+}
+.flex-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.GSG {
+    padding-left: 15px;
+    font-size: 30px;
+    padding-top: 15px;
+}
+.icons-wrapper {
+    padding-right: 15px;
+    padding-top: 24px;
+}
+.icons-wrapper img {
+    margin-right: 8px;
+    cursor: pointer;
+}

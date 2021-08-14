@@ -1,0 +1,17 @@
+<div class="header-wrapper">
+    <div class="flex-wrapper">
+        <div class="GSG">Geeta Shree Garments</div>
+        <div class="icons-wrapper">
+            <img (click)="minimizeApp()" src="assets/images/minimize.png" alt="">
+            <img (click)="closeApp()" src="assets/images/close.png" alt="">
+        </div>
+    </div>
+</div>
+<mat-tab-group>
+    <mat-tab label="New Bill">
+        <app-new-bill></app-new-bill>
+    </mat-tab>
+    <mat-tab label="Old Bills">
+        <app-old-bills></app-old-bills>
+    </mat-tab>
+</mat-tab-group>

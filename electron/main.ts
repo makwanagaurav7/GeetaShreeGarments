@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, screen } from 'electron';
 import * as path from 'path'
 import * as url from 'url'
 
@@ -13,7 +13,25 @@ app.on('activate', () => {
 })
 
 function createWindow() {
-    win = new BrowserWindow({ fullscreen: true })
+    // win = new BrowserWindow({
+    //     fullscreen: true,
+    //     webPreferences: {
+    //         nodeIntegration: true,
+    //         enableRemoteModule: true
+    //     },
+    // })
+    const { width, height } = screen.getPrimaryDisplay().workAreaSize
+    win = new BrowserWindow({ 
+        width, 
+        height,
+        frame: false,
+        webPreferences: {
+          nodeIntegration: true,
+          enableRemoteModule: true,
+          devTools: false,
+          nodeIntegrationInWorker: true
+        }
+     })
     win.loadURL(
         url.format({
             pathname: path.join(__dirname, `/../../dist/angular-electron/index.html`),
@@ -22,7 +40,7 @@ function createWindow() {
         })
     )
 
-    win.webContents.openDevTools()
+    // win.webContents.openDevTools()
 
     // win.on('closed', () => {
     //     win = null

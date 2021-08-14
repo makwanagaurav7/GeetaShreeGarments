@@ -1,0 +1,98 @@
+<div class="container">
+    <div class="customer-details-wrapper">
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field class="mat-form-field-class">
+                    <input matInput placeholder="Customer Name" [(ngModel)]="customerName" required>
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field class="mat-form-field-class">
+                    <input matInput readonly [matDatepicker]="picker" [(ngModel)]="billedDate"
+                        placeholder="Billing Date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field class="mat-form-field-class">
+                    <input matInput placeholder="Customer Contact Number" [(ngModel)]="customerContactNumber">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field class="mat-form-field-class">
+                    <mat-label>Billing By:</mat-label>
+                    <mat-select [(value)]="billedBy">
+                        <mat-option value="Dinesh">Dinesh</mat-option>
+                        <mat-option value="Brajesh">Brajesh</mat-option>
+                        <mat-option value="Premlata">Premlata</mat-option>
+                        <mat-option value="Shrushti">Shrushti</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+
+    <div class="add-items">Add Items</div>
+
+    <div class="items-wrapper">
+        <form [formGroup]="optionCForm" novalidate>
+            <table class="table" style="border: hidden;">
+                <thead class="text-nowrap">
+                    <th class="item-heading">Item name<span class="ui-column-resizer"> </span></th>
+                    <th class="item-heading">Number of Items<span class="ui-column-resizer"> </span></th>
+                    <th class="item-heading">One item Price<span class="ui-column-resizer"> </span></th>
+                    <th class="item-heading">Total Item Amount<span class="ui-column-resizer"> </span></th>
+                </thead>
+                <tbody>
+                    <ng-container formArrayName="tableRows"
+                        *ngFor="let group of getFormControls.controls ; let i=index">
+                        <tr [formGroupName]="i" style="border: hidden;">
+                            <td>
+                                <mat-form-field appearance="outline" class="parent-mat-form">
+                                    <input matInput type="text" formControlName="itemName" [value]=""
+                                        autocomplete="off">
+                                </mat-form-field>
+                            </td>
+
+                            <td>
+                                <mat-form-field appearance="outline" class="parent-mat-form">
+                                    <input matInput type="text" maxlength="10" formControlName="numberOfItems"
+                                        [value]="" autocomplete="off">
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field appearance="outline" class="parent-mat-form">
+                                    <input matInput type="text" formControlName="oneItemPrice" [value]=""
+                                        autocomplete="off">
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field appearance="outline" class="parent-mat-form">
+                                    <input matInput type="text" maxlength="10" formControlName="totalItemAmount"
+                                        [value]="" autocomplete="off" readonly>
+                                </mat-form-field>
+                            </td>
+                            <td style="padding-top: 22px;">
+                                <a href="javascript:void(0)">
+                                    <mat-icon (click)="addRow()">add_circle_outline</mat-icon>
+                                </a>
+                            </td>
+                            <td style="padding-top: 22px;">
+                                <a href="javascript:void(0)" *ngIf="i > 0">
+                                    <mat-icon style="color: red;" (click)="deleteRow(i)">delete_forever</mat-icon>
+                                </a>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <div style="float: right;padding-bottom: 30px;">
+        <button type="button" class="btn btn-primary preview-button">Preview</button>
+    </div>
+</div>
