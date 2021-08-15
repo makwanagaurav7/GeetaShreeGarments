@@ -11,8 +11,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 import { NewBillComponent } from './components/new-bill/new-bill.component';
-import { OldBillsComponent } from './components/old-bills/old-bills.component'; 
+import { OldBillsComponent } from './components/old-bills/old-bills.component';
+import { PreviewPopupComponent }  from './components/preview-popup/preview-popup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 
@@ -21,7 +23,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     AppComponent,
     BillingComponent,
     NewBillComponent,
-    OldBillsComponent
+    OldBillsComponent,
+    PreviewPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

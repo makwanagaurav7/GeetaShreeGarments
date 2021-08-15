@@ -2,20 +2,21 @@
     <div class="customer-details-wrapper">
         <div class="row">
             <div class="col-6">
-                <mat-form-field class="mat-form-field-class">
-                    <input matInput placeholder="Customer Name" [(ngModel)]="customerName" required>
+                <span>Enter Customer Name: </span>
+                <mat-form-field appearance="outline" class="parent-mat-form">
+                    <input matInput [(ngModel)]="customerName" required (keypress)="fieldKeyPressEvent('name', $event)">
                 </mat-form-field>
             </div>
             <div class="col-6">
-                <mat-form-field class="mat-form-field-class">
+                <!-- <mat-form-field class="mat-form-field-class">
                     <input matInput readonly [matDatepicker]="picker" [(ngModel)]="billedDate"
                         placeholder="Billing Date">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
+                </mat-form-field> -->
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-6">
                 <mat-form-field class="mat-form-field-class">
                     <input matInput placeholder="Customer Contact Number" [(ngModel)]="customerContactNumber">
@@ -32,7 +33,7 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <div class="add-items">Add Items</div>
@@ -41,10 +42,10 @@
         <form [formGroup]="optionCForm" novalidate>
             <table class="table" style="border: hidden;">
                 <thead class="text-nowrap">
-                    <th class="item-heading">Item name<span class="ui-column-resizer"> </span></th>
-                    <th class="item-heading">Number of Items<span class="ui-column-resizer"> </span></th>
-                    <th class="item-heading">One item Price<span class="ui-column-resizer"> </span></th>
-                    <th class="item-heading">Total Item Amount<span class="ui-column-resizer"> </span></th>
+                    <th class="item-heading">Item name</th>
+                    <th class="item-heading">Number of Items</th>
+                    <th class="item-heading">Price per Item</th>
+                    <th class="item-heading">Total Item Amount</th>
                 </thead>
                 <tbody>
                     <ng-container formArrayName="tableRows"
@@ -52,26 +53,26 @@
                         <tr [formGroupName]="i" style="border: hidden;">
                             <td>
                                 <mat-form-field appearance="outline" class="parent-mat-form">
-                                    <input matInput type="text" formControlName="itemName" [value]=""
+                                    <input matInput type="text" (keypress)="fieldKeyPressEvent('name', $event)" formControlName="itemName" [value]=""
                                         autocomplete="off">
                                 </mat-form-field>
                             </td>
 
                             <td>
                                 <mat-form-field appearance="outline" class="parent-mat-form">
-                                    <input matInput type="text" maxlength="10" formControlName="numberOfItems"
+                                    <input matInput type="text" (keypress)="fieldKeyPressEvent('number', $event)" maxlength="10" formControlName="numberOfItems"
                                         [value]="" autocomplete="off">
                                 </mat-form-field>
                             </td>
                             <td>
                                 <mat-form-field appearance="outline" class="parent-mat-form">
-                                    <input matInput type="text" formControlName="oneItemPrice" [value]=""
+                                    <input matInput type="text" (keypress)="fieldKeyPressEvent('number', $event)" formControlName="pricePerItem" [value]=""
                                         autocomplete="off">
                                 </mat-form-field>
                             </td>
                             <td>
                                 <mat-form-field appearance="outline" class="parent-mat-form">
-                                    <input matInput type="text" maxlength="10" formControlName="totalItemAmount"
+                                    <input matInput type="text" (keypress)="fieldKeyPressEvent('number', $event)" maxlength="10" formControlName="totalItemAmount"
                                         [value]="" autocomplete="off" readonly>
                                 </mat-form-field>
                             </td>
@@ -92,7 +93,11 @@
         </form>
     </div>
 
+    <div class="flex-wrapper">
+        <div style="margin-left: 72px;">Total</div>
+        <div style="margin-right: 160px;">{{totalAmount}}</div>
+    </div>
     <div style="float: right;padding-bottom: 30px;">
-        <button type="button" class="btn btn-primary preview-button">Preview</button>
+        <button type="button" (click)="previewClick()" class="btn btn-primary preview-button">Preview</button>
     </div>
 </div>
